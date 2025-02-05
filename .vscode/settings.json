@@ -1,0 +1,15 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "window.zoomLevel": 0.85,
+  "editor.inlineSuggest.enabled": false,
+  "editor.quickSuggestions": { "strings": false },
+  "editor.suggest.snippetsPreventQuickSuggestions": true,
+  "cursor.cpp.disabledLanguages": ["markdown"]
+}
