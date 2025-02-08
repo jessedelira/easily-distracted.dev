@@ -5,3 +5,4 @@
 - [ ] I have updated the latest blog to feature
 - [ ] Set the previous latest blog to featured: false
 - [ ] Verified Grammar and Spelling
+- [ ] Get latest ISO 8601 using `new Date().toISOString()`
