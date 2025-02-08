@@ -24,7 +24,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   <main id="main-content">
     <section id="hero">
       <div class="greeting-container">
-        <h1 id="greeting">Welcome</h1>
+        <h1 id="greeting">Welcome!</h1>
       </div>
       <p>
         My name is Jesse. I'm a software engineer and I create things. This is a
@@ -184,7 +184,14 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 </style>
 
 <script>
-  const greetings = ["Welcome!", "Bienvenido!", "Willkommen!"];
+  // "Welcome!" is added at the end to ensure it is a loop, since we need to define a greeting at the start of page load
+  const greetings = [
+    "Bienvenido!",
+    "Willkommen!",
+    "Mingalaba!",
+    "こんにちは!",
+    "Welcome!",
+  ];
 
   const greetingElement = document.getElementById("greeting");
   let currentIndex = 0;
