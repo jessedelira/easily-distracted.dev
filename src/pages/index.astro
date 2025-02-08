@@ -23,24 +23,9 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   <Header />
   <main id="main-content">
     <section id="hero">
-      <h1>Welcome</h1>
-      <a
-        target="_blank"
-        href="/rss.xml"
-        class="rss-link"
-        aria-label="rss feed"
-        title="RSS Feed"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" class="rss-icon"
-          ><path
-            d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"
-          ></path><path
-            d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"
-          ></path><circle cx="6" cy="18" r="2"></circle>
-        </svg>
-        <span class="sr-only">RSS Feed</span>
-      </a>
-
+      <div class="greeting-container">
+        <h1 id="greeting">Welcome</h1>
+      </div>
       <p>
         My name is Jesse. I'm a software engineer and I create things. This is a
         place to share my findings/thoughts on a variety of topics
@@ -149,4 +134,81 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   .all-posts-btn-wrapper {
     @apply my-8 text-center;
   }
+
+  .greeting-container {
+    height: 85px;
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 10px;
+  }
+
+  #greeting {
+    position: absolute;
+    width: 100%;
+    margin: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    opacity: 1;
+  }
+
+  .slide-up {
+    animation: slideUp 0.5s ease-in-out;
+  }
+
+  .slide-in {
+    animation: slideIn 0.5s ease-in-out;
+  }
+
+  @keyframes slideUp {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+  }
+
+  @keyframes slideIn {
+    0% {
+      transform: translateY(50%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
 </style>
+
+<script>
+  const greetings = ["Welcome!", "Bienvenido!", "Willkommen!"];
+
+  const greetingElement = document.getElementById("greeting");
+  let currentIndex = 0;
+
+  function updateGreeting() {
+    const nextIndex = (currentIndex + 1) % greetings.length;
+    if (!greetingElement) return;
+    if (greetings[nextIndex] === greetingElement.textContent) {
+      return;
+    }
+
+    greetingElement.classList.add("slide-up");
+
+    setTimeout(() => {
+      currentIndex = nextIndex;
+      greetingElement.textContent = greetings[currentIndex];
+      greetingElement.classList.remove("slide-up");
+      greetingElement.classList.add("slide-in");
+
+      setTimeout(() => {
+        greetingElement.classList.remove("slide-in");
+      }, 500);
+    }, 450);
+  }
+
+  setInterval(updateGreeting, 3000);
+</script>
